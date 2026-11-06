@@ -1,0 +1,18 @@
+{
+  "handoff-hooks": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "{PYTHON} {HOOKS}/handoff_bootstrap.py --tool agy",
+        "timeout": 10
+      }
+    ],
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "{PYTHON} {HOOKS}/session_age_hint.py --tool agy",
+        "timeout": 10
+      }
+    ]
+  }
+}

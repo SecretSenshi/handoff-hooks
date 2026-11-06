@@ -1,0 +1,5 @@
+# 引継ぎ書は使う人ごとの作業の記録なので、公開リポジトリに入れない
+handoff/
+__pycache__/
+tests/_tmp-*/
+config.json

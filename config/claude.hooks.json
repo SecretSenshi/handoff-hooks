@@ -1,0 +1,37 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{PYTHON} {HOOKS}/handoff_bootstrap.py --tool claude",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{PYTHON} {HOOKS}/session_age_hint.py --tool claude",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{PYTHON} {HOOKS}/session_age_hint.py --tool claude --user",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

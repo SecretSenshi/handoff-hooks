@@ -1,0 +1,39 @@
+{
+  "description": "handoff-hooks: 引継ぎ書の案内(install.py が入れた。直すときは handoff-hooks の config/codex.hooks.json)",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{PYTHON} {HOOKS}/handoff_bootstrap.py --tool codex",
+            "timeout": 10,
+            "statusMessage": "引継ぎ書を確認中"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{PYTHON} {HOOKS}/session_age_hint.py --tool codex",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "{PYTHON} {HOOKS}/session_age_hint.py --tool codex --user",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
